@@ -1,0 +1,12 @@
+.home-container {
+  width: 100%;
+}
+
+.sensor-list-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap:wrap;
+  gap: 50px;
+  margin: 50px;
+}

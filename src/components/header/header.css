@@ -1,0 +1,13 @@
+.header-container {
+  background-color: #17191e;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.header-title {
+  font-size: 30px;
+  text-align: left;
+  padding: 20px;
+  margin: 0;
+}
