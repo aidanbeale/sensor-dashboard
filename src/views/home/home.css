@@ -9,4 +9,6 @@
   flex-wrap:wrap;
   gap: 50px;
   margin: 50px;
+  top: 75px;
+  position: fixed;
 }
