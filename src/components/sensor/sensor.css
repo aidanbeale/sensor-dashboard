@@ -1,7 +1,56 @@
 .sensor-container {
-  padding: 100px;
+  padding: 10px;
   background-color: #4a515f;
   border-radius: 10px;
-  width: 5em;
-  height: 5em;
+  flex-grow: 1;
+  min-width: 200px;
+  max-width: 50%;
+}
+
+.sensor-container h2 {
+  text-align: left;
+  top: 0;
+  position: relative;
+  margin: 0;
+  font-size: 30px;
+}
+
+.sensor-container p {
+  font-size: 26px;
+  text-align: left;
+}
+
+.status-indicator {
+  height: auto;
+  width: 8px;
+  border-radius: 8px;
+  background-color: #00CB24;
+  margin-right: 8px;
+}
+
+.sensor-header {
+  display: flex;
+}
+
+.sensor-updated {
+  font-size: 14px !important;
+  margin: 3px 0 0 0;
+}
+
+.sensor-output-name {
+  font-size: 12px;
+  text-align: left;
+  padding: 5px 0 0 5px;
+}
+
+.sensor-output {
+  padding: 30px 30px 45px 30px;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.sensor-output-container {
+  background-color: #17191e;
+  border-radius: 5px;
+  margin-top: 15px;
 }

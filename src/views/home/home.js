@@ -13,6 +13,8 @@ const Home = () => {
         <Sensor />
         <Sensor />
         <Sensor />
+        <Sensor />
+        <Sensor />
       </div>
     </div>
   )
