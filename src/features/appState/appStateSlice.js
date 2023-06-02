@@ -1,19 +1,32 @@
 const initialState = {
-  sensorData: []
+  rawSensorData: [],
+  filteredSensorData: []
 }
 
 export default function appStateReducer(state = initialState, action) {
   switch (action.type) {
-    case 'appState/setSensorData': {
+    case 'appState/setRawSensorData': {
       return {
         ...state,
-        sensorData: action.payload
+        rawSensorData: action.payload
       }
     }
-    case 'appState/resetSensorData': {
+    case 'appState/resetRawSensorData': {
       return {
         ...state,
-        sensorData: initialState.sensorData
+        rawSensorData: initialState.rawSensorData
+      }
+    }
+    case 'appState/setFilteredSensorData': {
+      return {
+        ...state,
+        filteredSensorData: action.payload
+      }
+    }
+    case 'appState/resetFilteredSensorData': {
+      return {
+        ...state,
+        filteredSensorData: initialState.filteredSensorData
       }
     }
     case 'appState/reset': {

@@ -1,4 +1,4 @@
-const fetchSensorData = (cities) => {
+const fetchSensorData = () => {
   return new Promise((resolve, reject) => {
     async function fetchData() {
       const response = await fetch(process.env.REACT_APP_DATA_URL + '/data', {
