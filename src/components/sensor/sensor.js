@@ -14,7 +14,7 @@ const Sensor = ({ sensorData }) => {
   const [minsSince, setMinsSince] = useState(0);
   const [time, setTime] = useState(Date.now());
   const [extendData, setExtendData] = useState(false);
-  const [indicatorColour, setIndicatorColour] = useState("#cb7900");
+  const [indicatorColour, setIndicatorColour] = useState("#4a515f");
 
   let latestUpdate = sensorData.data[0];
 
