@@ -5,6 +5,7 @@
   flex-grow: 1;
   min-width: 230px;
   max-width: 50%;
+  height: fit-content;
 }
 
 .sensor-container h2 {
@@ -53,4 +54,19 @@
   background-color: #17191e;
   border-radius: 5px;
   margin-top: 15px;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }

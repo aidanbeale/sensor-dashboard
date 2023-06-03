@@ -29,8 +29,9 @@ const Home = () => {
     <div className="home-container">
       <Header />
       <div className="sensor-list-container">
-        {appState.filteredSensorData ? appState.filteredSensorData.map(item => 
-          <Sensor sensorData={item} />
+        {appState.filteredSensorData ? appState.filteredSensorData.map((sensorData, key) => {
+          return <Sensor key={key} sensorData={sensorData} />
+        }
         ) : null}
       </div>
     </div>

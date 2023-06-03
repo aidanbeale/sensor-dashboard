@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
+
+import Chart from "../chart/chart";
 
 import './sensor.css';
 
 const Sensor = ({ sensorData }) => {
-  let latestUpdate = sensorData.data[0];
-
   const [minsSince, setMinsSince] = useState(0);
   const [time, setTime] = useState(Date.now());
+  const [extendData, setExtendData] = useState(false);
+
+  let latestUpdate = sensorData.data[0];
 
   useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 1000);
-  
+    
     const ts = new Date().getTime();
     const currentTime = (ts-(ts%1000))/1000;
     const lastUpdateTime = Math.floor((currentTime - (latestUpdate.timestamp_TTL - 86400)) / 60);
@@ -21,8 +25,16 @@ const Sensor = ({ sensorData }) => {
     };
   }, [time]);
 
+  const clickOnSensor = () => {
+    if (!extendData) {
+      setExtendData(true);
+    } else {
+      setExtendData(false);
+    }
+  }
+
   return (
-    <div className="sensor-container">
+    <div className="sensor-container" onClick={clickOnSensor}>
       <div className="sensor-header">
         <div className="status-indicator" />
         <div>
@@ -40,6 +52,9 @@ const Sensor = ({ sensorData }) => {
           <div className="sensor-output">{latestUpdate.humidity}%</div>
         </div>
       </div>
+      <CSSTransition in={extendData} timeout={300} classNames="my-node" unmountOnExit appear>
+          <Chart sensorData={sensorData} />
+      </CSSTransition>
     </div>
   )
 };
