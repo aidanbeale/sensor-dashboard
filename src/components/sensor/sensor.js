@@ -9,6 +9,7 @@ const Sensor = ({ sensorData }) => {
   const [minsSince, setMinsSince] = useState(0);
   const [time, setTime] = useState(Date.now());
   const [extendData, setExtendData] = useState(false);
+  const [indicatorColour, setIndicatorColour] = useState("#cb7900");
 
   let latestUpdate = sensorData.data[0];
 
@@ -19,6 +20,14 @@ const Sensor = ({ sensorData }) => {
     const currentTime = (ts-(ts%1000))/1000;
     const lastUpdateTime = Math.floor((currentTime - (latestUpdate.timestamp_TTL - 86400)) / 60);
     setMinsSince(lastUpdateTime);
+
+    if (minsSince >= 6 && minsSince <= 20) {
+      setIndicatorColour("#cb7900");
+    } else if (minsSince > 20) {
+      setIndicatorColour("#cb0000");
+    } else {
+      setIndicatorColour("#00CB24");
+    }
 
     return () => {
       clearInterval(interval);
@@ -36,7 +45,7 @@ const Sensor = ({ sensorData }) => {
   return (
     <div className="sensor-container" onClick={clickOnSensor}>
       <div className="sensor-header">
-        <div className="status-indicator" />
+        <div className="status-indicator" style={{backgroundColor : indicatorColour}}/>
         <div>
           <h2>{sensorData.name}</h2>
           <p className="sensor-updated">Last Updated: {minsSince} minute{minsSince !== 1 ? 's' : ''} ago</p>
