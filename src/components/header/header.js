@@ -4,7 +4,7 @@ import RefreshButton from "../refreshButton/refreshButton";
 
 import './header.css';
 
-const Sensor = () => {
+const Header = () => {
   return (
     <div className="header-container">
       <h1 className="header-title">Sensor Dashboard</h1>
@@ -13,4 +13,4 @@ const Sensor = () => {
   )
 };
 
-export default Sensor;
+export default Header;
