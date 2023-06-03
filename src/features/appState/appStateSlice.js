@@ -1,6 +1,7 @@
 const initialState = {
   rawSensorData: [],
-  filteredSensorData: []
+  filteredSensorData: [],
+  openGraphCount: 0
 }
 
 export default function appStateReducer(state = initialState, action) {
@@ -27,6 +28,12 @@ export default function appStateReducer(state = initialState, action) {
       return {
         ...state,
         filteredSensorData: initialState.filteredSensorData
+      }
+    }
+    case 'appState/updateOpenGraphCount': {
+      return {
+        ...state,
+        openGraphCount: action.payload
       }
     }
     case 'appState/reset': {

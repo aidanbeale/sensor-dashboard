@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
+import { useSelector, useDispatch } from 'react-redux'
 
 import Chart from "../chart/chart";
 
 import './sensor.css';
 
 const Sensor = ({ sensorData }) => {
+  const dispatch = useDispatch()
+  const selectTempState = state => state.tempState
+  const tempState = useSelector(selectTempState)
+  
   const [minsSince, setMinsSince] = useState(0);
   const [time, setTime] = useState(Date.now());
   const [extendData, setExtendData] = useState(false);
@@ -37,8 +42,10 @@ const Sensor = ({ sensorData }) => {
   const clickOnSensor = () => {
     if (!extendData) {
       setExtendData(true);
+      dispatch({ type: 'tempState/updateOpenGraphCount', payload: tempState.openGraphCount + 1});
     } else {
       setExtendData(false);
+      dispatch({ type: 'tempState/updateOpenGraphCount', payload: tempState.openGraphCount - 1});
     }
   }
 
