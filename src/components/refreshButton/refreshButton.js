@@ -12,7 +12,7 @@ const RefreshButton = () => {
     if (!loading) {
       setLoading(true);
       dispatch({ type: 'appState/reset' });
-
+      dispatch({ type: 'tempState/reset' });
     }
   };
 
