@@ -70,3 +70,13 @@
   opacity: 0;
   transition: opacity 200ms;
 }
+
+.stats-container-extend {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+
+.sensor-output-extend {
+  padding: 15px 15px 20px 25px;
+}

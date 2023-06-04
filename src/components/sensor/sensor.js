@@ -49,6 +49,11 @@ const Sensor = ({ sensorData }) => {
     }
   }
 
+  // sensor-output:     padding: 10px 15px 10px 15px;
+  // stats-container:     display: flex;
+    // justify-content: space-around;
+    // padding-bottom: 20px;
+
   return (
     <div className="sensor-container" onClick={clickOnSensor}>
       <div className="sensor-header">
@@ -58,14 +63,14 @@ const Sensor = ({ sensorData }) => {
           <p className="sensor-updated">Last Updated: {minsSince} minute{minsSince !== 1 ? 's' : ''} ago</p>
         </div>
       </div>
-      <div className="stats-container">
+      <div className={'stats-container' + (extendData ? ' stats-container-extend' : '')}>
         <div className="sensor-output-container">
           <div className="sensor-output-name">TEMPERATURE</div>
-          <div className="sensor-output">{latestUpdate.temperature}°C</div>
+          <div className={'sensor-output' + (extendData ? ' sensor-output-extend' : '')}>{latestUpdate.temperature}°C</div>
         </div>
         <div className="sensor-output-container">
           <div className="sensor-output-name">HUMIDITY</div>
-          <div className="sensor-output">{latestUpdate.humidity}%</div>
+          <div className={'sensor-output' + (extendData ? ' sensor-output-extend' : '')}>{latestUpdate.humidity}%</div>
         </div>
       </div>
       <CSSTransition in={extendData} timeout={300} classNames="my-node" unmountOnExit appear>

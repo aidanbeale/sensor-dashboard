@@ -25,7 +25,7 @@ const Chart = ({ sensorData }) => {
   if (tempState.openGraphCount > 1) {
     rightValue = 10;
   } else {
-    rightValue = 50;
+    rightValue = 20;
   }
 
   return (
