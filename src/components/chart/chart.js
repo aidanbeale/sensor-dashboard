@@ -20,7 +20,7 @@ const Chart = ({ sensorData }) => {
 
   const convertedData = convertToTime(sensorData);
 
-  let rightValue = 20;
+  let rightValue;
 
   if (tempState.openGraphCount > 1) {
     rightValue = 10;

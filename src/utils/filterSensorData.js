@@ -15,7 +15,7 @@ const filterSensorData = (rawData) => {
 
   // Sort by timestamp
   for (let i=0; i<data.length; i++) {
-    data[i].data.sort((t1, t2) => (t1.timestamp_TTL < t2.timestamp_TTL) ? 1 : (t1.timestamp_TTL > t2.timestamp_TTL) ? -1 : 0);
+    data[i].data.sort((t1, t2) => (t1.timestamp_TTL < t2.timestamp_TTL) ? -1 : (t1.timestamp_TTL > t2.timestamp_TTL) ? 1 : 0);
   }
 
   return data;

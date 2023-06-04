@@ -16,7 +16,7 @@ const Sensor = ({ sensorData }) => {
   const [extendData, setExtendData] = useState(false);
   const [indicatorColour, setIndicatorColour] = useState("#4a515f");
 
-  let latestUpdate = sensorData.data[0];
+  let latestUpdate = sensorData.data[sensorData.data.length -1];
 
   useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 1000);
