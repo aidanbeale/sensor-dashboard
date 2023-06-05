@@ -34,7 +34,7 @@ const Home = () => {
       {showSettings ? <Settings setShowSettings={setShowSettings}/> : null}
       <div className={"sensor-list-container" + (showSettings ? " blur" : "")}>
         {appState.filteredSensorData ? appState.filteredSensorData.map((sensorData, key) => {
-          return <Sensor key={key} sensorData={sensorData} />
+          return <Sensor key={key} sensorData={sensorData} showSettings={showSettings}/>
         }
         ) : null}
       </div>

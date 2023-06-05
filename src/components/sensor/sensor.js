@@ -6,7 +6,7 @@ import Chart from "../chart/chart";
 
 import './sensor.css';
 
-const Sensor = ({ sensorData }) => {
+const Sensor = ({ sensorData, showSettings }) => {
   const dispatch = useDispatch()
   const selectTempState = state => state.tempState
   const tempState = useSelector(selectTempState)
@@ -40,7 +40,7 @@ const Sensor = ({ sensorData }) => {
   }, [time]);
 
   const clickOnSensor = () => {
-    if (!extendData) {
+    if (!extendData && !showSettings) {
       setExtendData(true);
       dispatch({ type: 'tempState/updateOpenGraphCount', payload: tempState.openGraphCount + 1});
     } else {
