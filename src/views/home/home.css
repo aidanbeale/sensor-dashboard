@@ -12,3 +12,7 @@
   top: 75px;
   position: fixed;
 }
+
+.blur {
+  filter: blur(4px);
+}

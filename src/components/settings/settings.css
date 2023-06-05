@@ -1,0 +1,13 @@
+.settings-container {
+  background-color:rgb(255, 246, 235);
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 450px;
+  border-radius: 10px;
+  color: black;
+}
