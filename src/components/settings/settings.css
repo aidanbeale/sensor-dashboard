@@ -10,6 +10,7 @@
   min-width: 450px;
   border-radius: 10px;
   color: black;
+  animation: fade 0.2s linear;
 }
 
 .settings-title {
@@ -27,6 +28,15 @@
   position: relative;
   justify-content: flex-start;
   margin-top: 15px;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* https://codepen.io/sawmon_and_natalie/pen/oNjwrRb */
