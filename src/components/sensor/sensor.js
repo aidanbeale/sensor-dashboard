@@ -49,11 +49,6 @@ const Sensor = ({ sensorData, showSettings }) => {
     }
   }
 
-  // sensor-output:     padding: 10px 15px 10px 15px;
-  // stats-container:     display: flex;
-    // justify-content: space-around;
-    // padding-bottom: 20px;
-
   return (
     <div className="sensor-container" onClick={clickOnSensor}>
       <div className="sensor-header">
@@ -73,9 +68,13 @@ const Sensor = ({ sensorData, showSettings }) => {
           <div className={'sensor-output' + (extendData ? ' sensor-output-extend' : '')}>{latestUpdate.humidity}%</div>
         </div>
       </div>
-      <CSSTransition in={extendData} timeout={300} classNames="my-node" unmountOnExit appear>
-          <Chart sensorData={sensorData} />
-      </CSSTransition>
+      {
+        extendData ? (
+          <CSSTransition in={extendData} timeout={0} className="my-node" unmountOnExit appear>
+            <Chart sensorData={sensorData} />
+          </CSSTransition>
+        ) : null
+      }
     </div>
   )
 };

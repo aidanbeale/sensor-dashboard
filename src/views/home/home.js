@@ -13,6 +13,8 @@ const Home = () => {
   const dispatch = useDispatch()
   const selectAppState = state => state.appState
   const appState = useSelector(selectAppState)
+  const selectTempState = state => state.tempState
+  const tempState = useSelector(selectTempState)
 
   const [showSettings, setShowSettings] = useState(false);
 
