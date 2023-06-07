@@ -30,6 +30,70 @@
   margin-top: 15px;
 }
 
+.setting-label {
+  font-size: 22px;
+}
+
+.orange-status {
+  background-color: #cb7900;
+  height: 25px;
+  width: 8px;
+  border-radius: 8px;
+  margin-right: 4px;
+}
+
+.red-status {
+  background-color: #cb0000;
+  height: 25px;
+  width: 8px;
+  border-radius: 8px;
+  margin-right: 4px;
+}
+
+.status-option {
+  display: flex;
+  margin-left: 10px;
+}
+
+.status-input {
+  width: 25px;
+  font-size: 20px;
+}
+
+.status-options-container {
+  display: flex;
+}
+
+.settings-container {
+  padding: 25px;
+}
+
+.status-mins-label {
+  margin-left: 5px;
+  font-size: 22px;
+}
+
+.settings-footer {
+  position:absolute; 
+  margin-left:-50px;
+  left:50%;
+  width:100px;
+  bottom:20px;
+}
+
+.settings-submit-button {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  transition: all .2s ease-in;
+}
+
+.settings-submit-button:hover {
+  background-color:hsla(0, 0%, 0%, 0.187);
+}
+
 @keyframes fade {
   0% {
     opacity: 0;

@@ -8,6 +8,8 @@ import './sensor.css';
 
 const Sensor = ({ sensorData, showSettings }) => {
   const dispatch = useDispatch()
+  const selectAppState = state => state.appState
+  const appState = useSelector(selectAppState)
   const selectTempState = state => state.tempState
   const tempState = useSelector(selectTempState)
   
@@ -26,9 +28,9 @@ const Sensor = ({ sensorData, showSettings }) => {
     const lastUpdateTime = Math.floor((currentTime - (latestUpdate.timestamp_TTL - 86400)) / 60);
     setMinsSince(lastUpdateTime);
 
-    if (minsSince >= 6 && minsSince <= 20) {
+    if (minsSince >= appState.orangeStatusMins && minsSince <= appState.redStatusMins) {
       setIndicatorColour("#cb7900");
-    } else if (minsSince > 20) {
+    } else if (minsSince > appState.redStatusMins) {
       setIndicatorColour("#cb0000");
     } else {
       setIndicatorColour("#00CB24");
