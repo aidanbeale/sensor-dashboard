@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+    max-height: 2rem;
+    &-thumb {
+      background-color:rgba(255, 255, 255, 0.6);
+    }
+  }
+  height: 100%;
+width: 100%;
 }
 
 code {

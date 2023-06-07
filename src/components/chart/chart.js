@@ -20,6 +20,13 @@ const Chart = ({ sensorData }) => {
 
   const convertedData = convertToTime(sensorData);
 
+  // Return interval for X-axis
+  const xInterval = () => {
+    let i1 = convertedData.length / 10;
+
+    return i1 < 30 ? i1 : 30;
+  }
+
   let rightValue;
 
   if (tempState.openGraphCount > 1) {
@@ -36,13 +43,13 @@ const Chart = ({ sensorData }) => {
       data={convertedData.data}
       margin={{
         top: 5,
-        right: rightValue,
+        right: 10,
         left: -25,
         bottom: 5
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="timestamp_TTL" interval={75} tick={{fontSize: 15, fill: '#d1d1d1'}}/>
+      <XAxis dataKey="timestamp_TTL" interval={xInterval} tick={{fontSize: 15, fill: '#d1d1d1'}}/>
       <YAxis tick={{fontSize: 15, fill: '#d1d1d1'}}/>
       <Tooltip />
       <Legend wrapperStyle={{fontSize: "24px"}}/>
@@ -59,13 +66,13 @@ const Chart = ({ sensorData }) => {
       data={convertedData.data}
       margin={{
         top: 5,
-        right: rightValue,
+        right: 10,
         left: -25,
         bottom: 5
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="timestamp_TTL" interval={75} tick={{fontSize: 15, fill: '#d1d1d1'}}/>
+      <XAxis dataKey="timestamp_TTL" interval={xInterval} tick={{fontSize: 15, fill: '#d1d1d1'}}/>
       <YAxis tick={{fontSize: 15, fill: '#d1d1d1'}}/>
       <Tooltip />
       <Legend wrapperStyle={{fontSize: "24px"}}/>

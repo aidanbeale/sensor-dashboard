@@ -6,8 +6,10 @@ import Chart from "../chart/chart";
 
 import './sensor.css';
 
-const Sensor = ({ sensorData }) => {
+const Sensor = ({ sensorData, showSettings }) => {
   const dispatch = useDispatch()
+  const selectAppState = state => state.appState
+  const appState = useSelector(selectAppState)
   const selectTempState = state => state.tempState
   const tempState = useSelector(selectTempState)
   
@@ -26,9 +28,9 @@ const Sensor = ({ sensorData }) => {
     const lastUpdateTime = Math.floor((currentTime - (latestUpdate.timestamp_TTL - 86400)) / 60);
     setMinsSince(lastUpdateTime);
 
-    if (minsSince >= 6 && minsSince <= 20) {
+    if (minsSince >= appState.orangeStatusMins && minsSince <= appState.redStatusMins) {
       setIndicatorColour("#cb7900");
-    } else if (minsSince > 20) {
+    } else if (minsSince > appState.redStatusMins) {
       setIndicatorColour("#cb0000");
     } else {
       setIndicatorColour("#00CB24");
@@ -40,7 +42,7 @@ const Sensor = ({ sensorData }) => {
   }, [time]);
 
   const clickOnSensor = () => {
-    if (!extendData) {
+    if (!extendData && !showSettings) {
       setExtendData(true);
       dispatch({ type: 'tempState/updateOpenGraphCount', payload: tempState.openGraphCount + 1});
     } else {
@@ -48,11 +50,6 @@ const Sensor = ({ sensorData }) => {
       dispatch({ type: 'tempState/updateOpenGraphCount', payload: tempState.openGraphCount - 1});
     }
   }
-
-  // sensor-output:     padding: 10px 15px 10px 15px;
-  // stats-container:     display: flex;
-    // justify-content: space-around;
-    // padding-bottom: 20px;
 
   return (
     <div className="sensor-container" onClick={clickOnSensor}>
@@ -73,9 +70,13 @@ const Sensor = ({ sensorData }) => {
           <div className={'sensor-output' + (extendData ? ' sensor-output-extend' : '')}>{latestUpdate.humidity}%</div>
         </div>
       </div>
-      <CSSTransition in={extendData} timeout={300} classNames="my-node" unmountOnExit appear>
-          <Chart sensorData={sensorData} />
-      </CSSTransition>
+      {
+        extendData ? (
+          <CSSTransition in={extendData} timeout={0} className="my-node" unmountOnExit appear>
+            <Chart sensorData={sensorData} />
+          </CSSTransition>
+        ) : null
+      }
     </div>
   )
 };

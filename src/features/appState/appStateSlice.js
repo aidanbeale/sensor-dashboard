@@ -1,7 +1,9 @@
 const initialState = {
   rawSensorData: [],
   filteredSensorData: [],
-  openGraphCount: 0
+  openGraphCount: 0,
+  orangeStatusMins: 10,
+  redStatusMins: 20,
 }
 
 export default function appStateReducer(state = initialState, action) {
@@ -28,6 +30,30 @@ export default function appStateReducer(state = initialState, action) {
       return {
         ...state,
         filteredSensorData: initialState.filteredSensorData
+      }
+    }
+    case 'appState/setOrangeStatusMins': {
+      return {
+        ...state,
+        orangeStatusMins: action.payload
+      }
+    }
+    case 'appState/resetOrangeStatusMins': {
+      return {
+        ...state,
+        orangeStatusMins: initialState.orangeStatusMins
+      }
+    }
+    case 'appState/setRedStatusMins': {
+      return {
+        ...state,
+        redStatusMins: action.payload
+      }
+    }
+    case 'appState/resetRedStatusMins': {
+      return {
+        ...state,
+        redStatusMins: initialState.redStatusMins
       }
     }
     case 'appState/updateOpenGraphCount': {
