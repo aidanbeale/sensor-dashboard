@@ -1,5 +1,5 @@
 const initialState = {
-  rawSensorData: [],
+  rawSensorData: null,
   filteredSensorData: [],
   openGraphCount: 0,
   orangeStatusMins: 10,

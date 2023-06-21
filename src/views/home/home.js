@@ -19,27 +19,35 @@ const Home = () => {
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
-    if (appState.rawSensorData.length === 0) {
+    if (appState.rawSensorData === null) {
       fetchSensorData()
         .then((fetchedData) => {
+          fetchedData = fetchedData.length == 0 ? null : fetchedData;
           dispatch({ type: 'appState/setRawSensorData', payload: fetchedData });
         });
     } else if (appState.filteredSensorData.length === 0) {
       const filteredData = filterSensorData(appState.rawSensorData);
       dispatch({ type: 'appState/setFilteredSensorData', payload: filteredData });
     }
-  });
+  }, [appState.rawSensorData]);
 
   return (
     <div className="home-container">
       <Header showSettings={showSettings} setShowSettings={setShowSettings} />
       {showSettings ? <Settings setShowSettings={setShowSettings}/> : null}
-      <div className={"sensor-list-container" + (showSettings ? " blur" : "")}>
-        {appState.filteredSensorData ? appState.filteredSensorData.map((sensorData, key) => {
-          return <Sensor key={key} sensorData={sensorData} showSettings={showSettings}/>
-        }
-        ) : null}
-      </div>
+      {appState.rawSensorData ? (
+        <div className={"sensor-list-container" + (showSettings ? " blur" : "")}>
+          {appState.filteredSensorData ? appState.filteredSensorData.map((sensorData, key) => {
+            return <Sensor key={key} sensorData={sensorData} showSettings={showSettings}/>
+          }
+          ) : null}
+        </div>
+      ) : (
+        <div className="no-data-container">
+          <p>No data...</p>
+        </div>
+      )}
+      
     </div>
   )
 };
