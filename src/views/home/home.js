@@ -8,6 +8,7 @@ import Settings from '../../components/settings/settings';
 import './home.css';
 import fetchSensorData from "../../utils/fetchSensorData";
 import filterSensorData from "../../utils/filterSensorData";
+import sampleData from "../../utils/sampleData";
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -20,11 +21,17 @@ const Home = () => {
 
   useEffect(() => {
     if (appState.rawSensorData === null) {
-      fetchSensorData()
+      if (process.env.REACT_APP_MODE === 'demo') {
+        const data = sampleData();
+        dispatch({ type: 'appState/setRawSensorData', payload: data });
+        return;
+      } else {
+        fetchSensorData()
         .then((fetchedData) => {
           fetchedData = fetchedData.length == 0 ? null : fetchedData;
           dispatch({ type: 'appState/setRawSensorData', payload: fetchedData });
         });
+      }
     } else if (appState.filteredSensorData.length === 0) {
       const filteredData = filterSensorData(appState.rawSensorData);
       dispatch({ type: 'appState/setFilteredSensorData', payload: filteredData });
