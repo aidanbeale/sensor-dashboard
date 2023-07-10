@@ -14,6 +14,7 @@ const Sensor = ({ sensorData, showSettings }) => {
   const tempState = useSelector(selectTempState)
   
   const [minsSince, setMinsSince] = useState(0);
+  const [lastUpdateText, setLastUpdateText] = useState();
   const [time, setTime] = useState(Date.now());
   const [extendData, setExtendData] = useState(false);
   const [indicatorColour, setIndicatorColour] = useState("#4a515f");
@@ -34,6 +35,12 @@ const Sensor = ({ sensorData, showSettings }) => {
       setIndicatorColour("#cb0000");
     } else {
       setIndicatorColour("#00CB24");
+    }
+
+    if (minsSince > 100) {
+      setLastUpdateText("A long time ago...")
+    } else {
+      setLastUpdateText(`${minsSince} minute${minsSince !== 1 ? 's' : ''} ago`)
     }
 
     return () => {
@@ -57,7 +64,7 @@ const Sensor = ({ sensorData, showSettings }) => {
         <div className="status-indicator" style={{backgroundColor : indicatorColour}}/>
         <div>
           <h2>{sensorData.name}</h2>
-          <p className="sensor-updated">Last Updated: {minsSince} minute{minsSince !== 1 ? 's' : ''} ago</p>
+          <p className="sensor-updated">Last Updated: {lastUpdateText}</p>
         </div>
       </div>
       <div className={'stats-container' + (extendData ? ' stats-container-extend' : '')}>
